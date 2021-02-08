@@ -6,7 +6,7 @@ $(document).ready(function () {
     });
 
     var awsUrl = "http://Paysafehelper-env.eba-pehyeyyj.us-west-2.elasticbeanstalk.com";
-    var localUrl = "http://desolate-fortress-19655.herokuapp.com/";
+    var localUrl = "http://desolate-fortress-19655.herokuapp.com";
     var baseUrl = localUrl;
     async function onPay() {
         let email = document.getElementById("email").value;
