@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class HtmlViewController {
-	@RequestMapping( "/" )
-    public String getCheckoutForm(){
+public class CustomerDetailPageViewController {
 
-        return "Chec";
-    }
+	@RequestMapping("/")
+	public String getCustomerDetailPage() {
+		return "CustomerDetailPage";
+	}
 
 }

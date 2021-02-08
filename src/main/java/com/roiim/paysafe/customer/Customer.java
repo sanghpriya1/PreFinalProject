@@ -5,38 +5,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 public class Customer {
-	
+
 	@Id
-	@GeneratedValue( strategy = GenerationType.IDENTITY )
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-    private String email;
-
-    private String paysafeId;
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPaysafeId() {
-		return paysafeId;
-	}
-
-	public void setPaysafeId(String paysafeId) {
-		this.paysafeId = paysafeId;
-	}
-
+	private String email;
+	private String paysafeId;
+	
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", email=" + email + ", paysafeId=" + paysafeId + "]";
 	}
-	
-    
 
 }

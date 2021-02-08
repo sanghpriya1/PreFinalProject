@@ -1,9 +1,19 @@
 package com.roiim.paysafe;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@SuppressWarnings("unused")
 public class GatewayResponse {
-	public String authCode;
-
-    public String avsResponse;
-
-    public String cvvVerification;
+	
+	private String authCode;
+    private String avsResponse;
+    private String cvvVerification;
+    
 }

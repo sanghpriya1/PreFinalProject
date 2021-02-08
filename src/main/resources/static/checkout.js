@@ -7,10 +7,8 @@ $(document).ready(function () {
 
     var awsUrl = "http://Paysafehelper-env.eba-pehyeyyj.us-west-2.elasticbeanstalk.com";
     var localUrl = "http://localhost:8080";
-    //var localUrl = "http://18.222.211.178:8080"
-    var baseUrl= localUrl;
+    var baseUrl = localUrl;
     async function onPay() {
-    	debugger;
         let email = document.getElementById("email").value;
         let firstName = document.getElementById("firstName").value;
         let lastName = document.getElementById("lastName").value;
@@ -21,15 +19,12 @@ $(document).ready(function () {
         let street = document.getElementById("inputAddress").value;
         //amount
         let amount = document.getElementById("inputAmount").value;
-        console.log("In pay function");
         $.ajax({
             url: baseUrl+"/SingleUseCustomerToken/" + email,
             type: "GET",
             contentType: "application/json",
             success: function (result) {
                 if (result.status === "OK" && result.data != null) {
-                    console.log("result of get single token:")
-                    console.log(result);
                     billingAddress = {
                         city: city,
                         street: street,
@@ -59,15 +54,10 @@ $(document).ready(function () {
     }
 
     function checkout(token, billingAddress, customer, amount, uuid) {
-	debugger;
-        console.log( "In Checkout function" );
-        console.log( token );
-        console.log( uuid );
         paysafe.checkout.setup("cHVibGljLTc3NTE6Qi1xYTItMC01ZjAzMWNiZS0wLTMwMmQwMjE1MDA4OTBlZjI2MjI5NjU2M2FjY2QxY2I0YWFiNzkwMzIzZDJmZDU3MGQzMDIxNDUxMGJjZGFjZGFhNGYwM2Y1OTQ3N2VlZjEzZjJhZjVhZDEzZTMwNDQ=", {
             "currency": "USD",
             "amount": parseInt(amount) * 100,
             "singleUseCustomerToken": token,
-
             "customer": customer,
             "billingAddress": billingAddress,
             "paymentMethodDetails": {
@@ -75,8 +65,7 @@ $(document).ready(function () {
                     "consumerId": "1232323"
                 },
             },
-            "environment": "TEST",
-      
+            "environment": "TEST",     
             "merchantRefNum": uuid,
             "canEditAmount": false,
             "payout": false,
@@ -84,13 +73,7 @@ $(document).ready(function () {
                 "maximumAmount": 10000
             }
         }, function (instance, error, result) {
-
-            console.log( "in call back function" );
             if (result && result.paymentHandleToken) {
-
-                console.log( result.paymentHandleToken );
-                console.log("result of checkout")
-                console.log(result);
                 requestBody = {
                     "merchantRefNum": uuid,
                     "paymentHandleToken": result.paymentHandleToken,
@@ -100,18 +83,12 @@ $(document).ready(function () {
                     "dupCheck": true,
                     "description": "Casino subscription"
                 }
-                debugger;
-                console.log("request body for payment process")
-                console.log(requestBody)
                 $.ajax({
                     type: "POST",
                     url: baseUrl+"/MakePayment/" + customer.email,
                     contentType: "application/json",
                     data: JSON.stringify(requestBody,),
                     success: (data) => {
-                        console.log("result of process payment:")
-                        console.log(data);
-
                         if (data.status === "OK" && data.data != null) {
                             instance.showSuccessScreen("Payment Done Successfully!");
                         }
@@ -119,7 +96,6 @@ $(document).ready(function () {
                             instance.showFailureScreen("Payment was declined. Try again with the same or another payment method.");
                         }
                         setTimeout(function(){window.location.replace(window.location.href);}, 10000);
-
                     }
                 });
             }

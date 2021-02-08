@@ -2,38 +2,33 @@ package com.roiim.paysafe.dto;
 
 import com.roiim.paysafe.GatewayResponse;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@SuppressWarnings("unused")
 public class MakePaymentResponseDTO {
-	public String id;
-
-    public Integer amount;
-
-    public String merchantRefNum;
-
-    public Boolean settleWithAuth;
-
-    public String paymentHandleToken;
-
-    public String txnTime;
-
-    public String customerIp;
-
-    public Boolean dupCheck;
-
-    public String description;
-
-    public String currencyCode;
-
-    public String paymentType;
-
-    public String status;
-
-    public Integer availableToSettle;
-
-    public GatewayResponse gatewayResponse;
-
-    public String customerId;
-
-    public String merchantCustomerId;
-
-
+	
+	private String id;
+	private Integer amount;
+	private String merchantRefNum;
+    private Boolean settleWithAuth;
+    private String paymentHandleToken;
+    private String txnTime;
+    private String customerIp;
+    private Boolean dupCheck;
+    private String description;
+    private String currencyCode;
+    private String paymentType;
+    private String status;
+    private Integer availableToSettle;
+    private GatewayResponse gatewayResponse;
+    private String customerId;
+    private String merchantCustomerId;
+    
 }

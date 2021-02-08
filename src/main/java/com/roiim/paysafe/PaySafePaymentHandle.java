@@ -1,20 +1,23 @@
 package com.roiim.paysafe;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@SuppressWarnings("unused")
 public class PaySafePaymentHandle {
 
-	public String id;
-
-    public String status;
-
-    public String usage;
-
-    public String paymentType;
-
-    public String paymentHandleToken;
-
-    public String billingDetailsId;
-
-    public Card card;
+	private String id;
+	private String status;
+	private String usage;
+	private String paymentType;
+	private String paymentHandleToken;
+	private String billingDetailsId;
+	private Card card;
+	
 }

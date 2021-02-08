@@ -9,5 +9,5 @@ import com.roiim.paysafe.customer.Customer;
 public interface CustomerRepository extends JpaRepository<Customer, Long>{	
 	
 	Customer findByEmail(String emailId);
-
+	
 }
