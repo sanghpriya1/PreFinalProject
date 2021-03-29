@@ -1,5 +1,15 @@
 
 .center {
-  text-align: left;
-  border: medium solid rgb(255, 255, 128);
+  margin: auto;
+  width: 100%;
+  border: 5px solid rgb(0, 0, 0);
+  padding: 30px;
 }
+.container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 200px;
+  background-color: rgb(255, 255, 255);
+  padding: 50px;
+}
+
